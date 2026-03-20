@@ -6,6 +6,7 @@ BMSZC Petrik Szoftverfejlesztőinek js automatizált tesztelést bemutató proje
 
 - Projekt létrehozása (ha még nincs package.json állomány)
   - test script-nek "vitest" legyen megadva
+  - a projekt típusa module legyen
 
 ```sh
 npm init
@@ -31,11 +32,25 @@ npm install
 npm run test
 ```
 
+- Futtatás watch módban (Folyamatosan figyeli a fájl változásokat, és változáskor újra lefuttatja az összes tesztet)
+
+```sh
+npx vitest --watch
+```
+
+- Futtatás coverage módban (tesztlefedetséget is kiírja, telepíteni kell hozzá a `@vitest/coverage-v8` packaget, de ezt felajánlja az első futtatásnál)
+
+```sh
+npx vitest --coverage
+```
+
 ## Javasolt vscode bővítmények
 
 - [vitest](https://marketplace.visualstudio.com/items?itemName=vitest.explorer)
+  - vscode testing menüpontja használható lest vitesthez
   - A bővítmény megfelelő működéséhez szükséges lehet vite / vitest config fájl létrehozására
 - [vitest snippets](https://marketplace.visualstudio.com/items?itemName=deinsoftware.vitest-snippets)
+  - különböző rövidítésekkel egészíti ki a codehelpert, amivel kódblockkok legenerálhatóak.
 
 ## Teszt fájl létrehozása
 
@@ -49,6 +64,14 @@ npm run test
       - ts: typescript fájl
       - jsx: react javascript fájl
       - tsx: react typescript fájl
+
+### Update vitest 4-es verziótól
+
+- A reguláris kifejezés megváltozott: `**/*.{test,spec}.?(c|m)[jt]s?(x)`
+- Alapból már csak olyan fájlokat fogad el, aminek a neve `.test` vagy `.spec`-el végződik
+- Új fájlkiterjesztéseket elfogad
+  - cjs: commonjs fájl
+  - mjs: ecmascript module fájl
 
 ## Segédlet
 
